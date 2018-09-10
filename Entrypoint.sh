@@ -2,7 +2,7 @@
 
 set -e
 
-RANCHER_CLI="/usr/local/bin/rancher"
+RANCHER_CLI="/rancher"
 
 
 if [ ! -f ${RANCHER_CLI} ]; then
