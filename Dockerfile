@@ -25,16 +25,21 @@ CMD /bin/bash
 ENV Rancher_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
     RANCHER_SECRET_KEY=**None** \
+    DB_SERVER=**None** \
+    DB_USER=**None** \
+    DB_PASSWORD=**None** \
    
-ENTRYPOINT ["/Entrypoint.sh"]
     
 # Copy required files
-COPY ./Entrypoint.sh /Entrypoint.sh
+COPY ./rancher-stack-remove.sh /rancher-stack-remove.sh
+COPY ./database-remove.sql /database-remove.sql
 COPY ./rancher /rancher
 #make files executable
 RUN chmod +x /Entrypoint.sh
 RUN chmod +x /rancher
+RUN chmod +x /database-remove.sql
 # Run the cron every evening at 11 oclock
-RUN echo '23  00  *  *  *    /Entrypoint.sh' > /etc/crontabs/root
+RUN echo '23  00  *  *  *    /rancher-stack-remove.sh' > /etc/crontabs/root
+RUN echo '23  05  *  *  *    /database-remove.sql.sh' > /etc/crontabs/root
 #set cron to run at log level 2 and in forground
 CMD ['crond', '-l 2', '-f']
