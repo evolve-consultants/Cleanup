@@ -30,13 +30,13 @@ ENV Rancher_URL=**None** \
     DB_PASSWORD=**None** \
 
 # Copy required files
-COPY rancherstackremove.sh /rancherstackremove.sh
-COPY databaseremove.sql /databaseremove.sql
-COPY rancher /rancher
+#COPY ./rancherstackremove.sh /rancherstackremove.sh
+#COPY from databaseremove.sql=databaseremove.sql
+#COPY rancher /rancher
 #make files executable
-RUN chmod +x /rancher_stack_remove.sh
-RUN chmod +x /rancher
-RUN chmod +x /database_removal.sql
+#RUN chmod +x /rancher_stack_remove.sh
+#RUN chmod +x /rancher
+#RUN chmod +x /database_removal.sql
 # Run the cron every evening at 11 oclock
 RUN echo '23  00  *  *  *    /rancher_stack_remove.sh' > /etc/crontabs/root
 RUN echo '23  05  *  *  *    /database_removal.sql' > /etc/crontabs/root
