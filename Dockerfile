@@ -28,12 +28,11 @@ ENV Rancher_URL=**None** \
     DB_SERVER=**None** \
     DB_USER=**None** \
     DB_PASSWORD=**None** \
-   
-    
+
 # Copy required files
-COPY ./rancher_stack_remove.sh /rancher_stack_remove.sh
-COPY ./database_remove.sql /database_remove.sql
-COPY ./rancher /rancher
+ADD ./rancher_stack_remove.sh /rancher_stack_remove.sh
+ADD ./database_remove.sql /database_remove.sql
+ADD ./rancher /rancher
 #make files executable
 RUN chmod +x /rancher_stack_remove.sh
 RUN chmod +x /rancher
