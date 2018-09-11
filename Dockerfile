@@ -35,11 +35,11 @@ COPY ./rancher-stack-remove.sh /rancher-stack-remove.sh
 COPY ./database-remove.sql /database-remove.sql
 COPY ./rancher /rancher
 #make files executable
-RUN chmod +x /Entrypoint.sh
+RUN chmod +x /rancher-stack-remove.sh
 RUN chmod +x /rancher
 RUN chmod +x /database-remove.sql
 # Run the cron every evening at 11 oclock
 RUN echo '23  00  *  *  *    /rancher-stack-remove.sh' > /etc/crontabs/root
-RUN echo '23  05  *  *  *    /database-remove.sql.sh' > /etc/crontabs/root
+RUN echo '23  05  *  *  *    /database-remove.sql' > /etc/crontabs/root
 #set cron to run at log level 2 and in forground
 CMD ['crond', '-l 2', '-f']
