@@ -1,6 +1,5 @@
 # SQL Server Command Line Tools
 FROM ubuntu:16.04
-MAINTAINER SQL Server Engineering Team
 
 # apt-get and system utilities
 RUN apt-get update && apt-get install -y \
@@ -20,7 +19,7 @@ RUN apt-get -y install locales
 RUN locale-gen en_US.UTF-8
 RUN update-locale LANG=en_US.UTF-8
 
-CMD /bin/bash 
+RUN apt-get install cron
 
 ENV Rancher_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
@@ -38,7 +37,7 @@ RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
 # Run the cron every evening at 11 oclock
-RUN echo '23  00  *  *  *    /rancher_stack_removal.sh' > /etc/crontabs/root
-RUN echo '23  05  *  *  *    /database_removal.sql' > /etc/crontabs/root
+#RUN echo '23  00  *  *  *    /rancher_stack_removal.sh' > /etc/crontabs/root
+#RUN echo '23  05  *  *  *    /database_removal.sql' > /etc/crontabs/root
 #set cron to run at log level 2 and in forground
 CMD ['crond', '-l 2', '-f']
