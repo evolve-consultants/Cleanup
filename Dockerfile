@@ -32,7 +32,7 @@ ENV Rancher_URL=**None** \
 COPY ./rancher_stack_removal.sh /rancher_stack_removal.sh
 COPY ./database_removal.sql /database_removal.sql
 COPY ./rancher /rancher
-COPY ./crontab /var/spool/cron/crontabs/root
+COPY ./cron /etc/cron.d/cron
 #make files executable
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
