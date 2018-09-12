@@ -40,4 +40,4 @@ RUN chmod +x /database_removal.sql
 RUN touch /var/log/cron.log
 
 #set cron to run at log level 2 and in forground
-CMD "service cron start"
+CMD ["crond","-f"]
