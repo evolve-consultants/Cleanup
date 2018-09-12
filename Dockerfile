@@ -4,6 +4,7 @@ FROM ubuntu:16.04
 # apt-get and system utilities
 RUN apt-get update && apt-get install -y \
 	curl apt-transport-https debconf-utils \
+    && apt-get install cron
     && rm -rf /var/lib/apt/lists/*
 
 # adding custom MS repository
@@ -18,8 +19,6 @@ RUN /bin/bash -c "source ~/.bashrc"
 RUN apt-get -y install locales
 RUN locale-gen en_US.UTF-8
 RUN update-locale LANG=en_US.UTF-8
-
-RUN apt-get install cron
 
 ENV Rancher_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
