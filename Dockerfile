@@ -32,13 +32,12 @@ ENV Rancher_URL=**None** \
 COPY ./rancher_stack_removal.sh /rancher_stack_removal.sh
 COPY ./database_removal.sql /database_removal.sql
 COPY ./rancher /rancher
+COPY ./crontab /etc/crontab
 #make files executable
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
 RUN touch /var/log/cron.log
-# Run the cron every evening at 11 oclock
-RUN echo '23  00  *  *  *    /rancher_stack_removal.sh' >> /var/log/cron.log 2>&1
-RUN echo '23  05  *  *  *    /database_removal.sql' >> /var/log/cron.log 2>&1
+
 #set cron to run at log level 2 and in forground
 CMD ['crond', '-l 2', '-f']
