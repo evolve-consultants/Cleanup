@@ -1,5 +1,5 @@
 # m h dom mon dow user  command
 #00  23  *  *  *    /rancher_stack_removal.sh >> /var/log/cron.log 2>&1
 #05  23  *  *  *    /database_removal.sql >> /var/log/cron.log 2>&1
-* * * * * echo "Hello world" >> /var/log/cron.log 2>&1
+* * * * * echo Helloworld >> /var/log/cron.log 2>&1
 #

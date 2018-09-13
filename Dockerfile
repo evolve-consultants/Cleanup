@@ -32,12 +32,12 @@ ENV Rancher_URL=**None** \
 COPY ./rancher_stack_removal.sh /rancher_stack_removal.sh
 COPY ./database_removal.sql /database_removal.sql
 COPY ./rancher /rancher
-#COPY ./cron /etc/cron.d/cron
+COPY ./cron /etc/cron.d/cron
 #make files executable
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
-#RUN touch /var/log/cron.log
+RUN touch /var/log/cron1.log
 
 #set cron to run at log level 2 and in forground
-CMD ["crond","-f"]
+CMD ["cron","-f"]
