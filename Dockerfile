@@ -37,7 +37,7 @@ COPY ./cron /etc/cron.d/cron
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
-RUN touch /var/log/cron1.log
+RUN chmod 644 /etc/cron.d/cron
 
 #set cron to run at log level 2 and in forground
 CMD ["cron","-f"]
