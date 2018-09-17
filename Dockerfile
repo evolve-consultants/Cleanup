@@ -40,6 +40,7 @@ RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
 RUN chmod +x /start.sh
+RUN sed -i -e 's/\r$//' /start.sh
 
 #set cron to run in forground
 #CMD ["cron","-f"]
