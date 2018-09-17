@@ -21,23 +21,26 @@ RUN update-locale LANG=en_US.UTF-8
 
 #install cron
 RUN apt-get update && apt-get install cron
-#setup environment variables to none
+#setup environment variables to none and CRON entries to create
 ENV Rancher_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
     RANCHER_SECRET_KEY=**None** \
     DB_SERVER=**None** \
     DB_USER=**None** \
     DB_PASSWORD=**None**
+    CRON_MINUTE=* * * * * root echo "Hello minute"
+
 
 # Copy required files and set permissions
 COPY ./rancher_stack_removal.sh /rancher_stack_removal.sh
 COPY ./database_removal.sql /database_removal.sql
 COPY ./rancher /rancher
-COPY ./cron /etc/cron.d/cron
+COPY ./start.sh /start.sh
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
-RUN chmod 644 /etc/cron.d/cron
+RUN chmod +x /start.sh
 
 #set cron to run in forground
-CMD ["cron","-f"]
+#CMD ["cron","-f"]
+CMD /start.sh && cron
