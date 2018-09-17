@@ -27,8 +27,8 @@ ENV Rancher_URL=**None** \
     RANCHER_SECRET_KEY=**None** \
     DB_SERVER=**None** \
     DB_USER=**None** \
-    DB_PASSWORD=**None**
-    CRON_MINUTE=* * * * * root echo "Hello minute"
+    DB_PASSWORD=**None** \
+    CRON_MINUTE="* * * * * root echo Hello minute"
 
 
 # Copy required files and set permissions

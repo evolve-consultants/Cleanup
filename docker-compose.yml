@@ -1,0 +1,12 @@
+version: '3'
+services:
+  cron:
+    image: Evolve/docker-cron
+    environment:
+      - CRON_MINUTE=* * * * * root echo "Hello minute"
+      - Rancher_URL=**None**
+      - RANCHER_ACCESS_KEY=**None**
+      - RANCHER_SECRET_KEY=**None**
+      - DB_SERVER=**None**
+      - DB_USER=**None**
+      - DB_PASSWORD=**None**
