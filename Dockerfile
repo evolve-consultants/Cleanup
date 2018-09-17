@@ -43,5 +43,4 @@ RUN chmod +x /start.sh
 RUN sed -i -e 's/\r$//' /start.sh
 
 #set cron to run in forground
-#CMD ["cron","-f"]
 CMD /start.sh && cron
