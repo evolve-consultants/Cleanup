@@ -26,7 +26,7 @@ This will print `Hello minute` every minute and `Hello hour` every full hour to 
 # Rancher-Stack-Removal
 Script to remove Rancher stacks containing the word "Review-"
 Env vars required
-CRON_RANCHER_REMOVE=0 23 * root /rancher_stack_removal.sh
+CRON_RANCHER_REMOVE=0 23 * * * root . /env.sh /rancher_stack_removal.sh
 RANCHER_URL=
 RANCHER_ACCESS_KEY=
 RANCHER_SECRET_KEY=
@@ -34,7 +34,7 @@ RANCHER_SECRET_KEY=
 #Database removal
 Will remove ALL other db's expect for listed exceptions
 Env vars required-
-CRON_DATABASE_REMOVE=0 23 * root "sqlcmd -S $DB_SERVER -U $DB_USER -P $DB_PASSWORD -i database_removal.sql"
+CRON_DATABASE_REMOVE=0 23 * * * root . /env.sh; sqlcmd -S $DB_SERVER -U $DB_USER -P $DB_PASSWORD -i database_removal.sql
 DB_SERVER=
 DB_USER=
 DB_PASSWORD=
