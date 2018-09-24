@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
@@ -11,10 +11,7 @@ if [ ! -f ${RANCHER_CLI} ]; then
 fi
 
 #Bring down review app stacks
-for stack in '$RANCHER_CLI stacks ls -q | grep review-'; do
-  #$RANCHER_CLI rm -s $stack
-  echo "deleting $stack"
-  
-
-		
-				
+for stack in `$RANCHER_CLI stacks ls | grep review- | awk '{ print $1 }'`
+do
+$RANCHER_CLI rm -s $stack
+done
