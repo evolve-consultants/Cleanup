@@ -22,7 +22,7 @@ RUN update-locale LANG=en_US.UTF-8
 #install cron
 RUN apt-get update && apt-get install cron
 #setup environment variables to none and CRON entries to create
-ENV Rancher_URL=**None** \
+ENV RANCHER_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
     RANCHER_SECRET_KEY=**None** \
     DB_SERVER=**None** \
@@ -31,16 +31,19 @@ ENV Rancher_URL=**None** \
     CRON_MINUTE="* * * * * root echo Hello minute"
 
 
-# Copy required files and set permissions
+# Copy required files
 COPY ./rancher_stack_removal.sh /rancher_stack_removal.sh
 COPY ./database_removal.sql /database_removal.sql
 COPY ./rancher /rancher
 COPY ./start.sh /start.sh
+#Setup permissions on scripts
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
 RUN chmod +x /start.sh
+#Remove carraige returns fromm scripts from windows to linux
 RUN sed -i -e 's/\r$//' /start.sh
+RUN sed -i -e 's/\r$//' /rancher_stack_removal.sh
 
 #set cron to run in forground
 CMD /start.sh && cron -f
