@@ -2,11 +2,9 @@ USE [master]
 -- Script to check all databases whose name starts with 'ebate'
 -- and delete those not containing the words dev, demo or test
 
---SELECT * FROM master.sys.databases WHERE name like 'eBate%' ORDER BY name ASC
-
 DECLARE @dbId AS int
 DECLARE @dbName AS sysname
-DECLARE @DBDeleteByName AS NVARCHAR(max);
+DECLARE @DBDeleteByName AS NVARCHAR(max)
 
 DECLARE MY_CURSOR CURSOR 
   LOCAL STATIC READ_ONLY FORWARD_ONLY
@@ -24,8 +22,7 @@ BEGIN
 	BEGIN
 		PRINT 'Deleting ' + @dbName + ' ...'
 		SELECT @DBDeleteByName = 'DROP DATABASE IF EXISTS [' + @dbName + ']'
-		EXEC sp_executesql @DBDeleteByName;
-		--PRINT @DBDeleteByName
+		EXEC sp_executesql @DBDeleteByName
 	END
 
     FETCH NEXT FROM MY_CURSOR INTO @dbId
