@@ -18,7 +18,7 @@ WHILE @@FETCH_STATUS = 0
 BEGIN
     SELECT @dbName = [name] FROM master.sys.databases WHERE database_id = @dbId
 
-	IF NOT(@dbName LIKE '%dev' OR @dbName LIKE '%demo' OR @dbName LIKE '%test' OR @dbName LIKE '%api')
+	IF NOT(@dbName LIKE '%dev' OR @dbName LIKE '%demo' OR @dbName LIKE '%sand' OR @dbName LIKE '%test' OR @dbName LIKE '%api')
 	BEGIN
 		PRINT 'Deleting ' + @dbName + ' ...'
 		SELECT @DBDeleteByName = 'DROP DATABASE IF EXISTS [' + @dbName + ']'
