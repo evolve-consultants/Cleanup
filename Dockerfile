@@ -27,6 +27,8 @@ RUN apt-get install mongodb-org-tools
 
 #install cron
 RUN apt-get update && apt-get install cron
+RUN apt-get install openssh-server
+RUN apt-get install sshpass
 #setup environment variables to none and CRON entries to create
 ENV RANCHER_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
