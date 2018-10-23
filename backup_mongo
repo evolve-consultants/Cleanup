@@ -18,7 +18,7 @@ BACKUP_DIR="/backup/mongo/$DATESTAMP"
 SFTP_SERVER="******"
 SFTP_USERNAME="******"
 SFTP_PASSWORD="******"
-FTP_UPLOAD_DIR="******"
+SFTP_UPLOAD_DIR="******"
 
 LOG_FILE=$BACKUP_DIR/backup_$DATESTAMP.log
 
@@ -40,7 +40,7 @@ echo "Starting  ftp at $TIMESTAMP" >> $LOG_FILE
 
 SSHPASS=$SFTP_PASSWORD sshpass -e sftp -oBatchMode=no -b - $SFTP_USERNAME@$SFTP_SERVER
  << !
-   cd $FTP_UPLOAD_DIR
+   cd $SFTP_UPLOAD_DIR
    put $TMP/$DATABASE_TAR_FILE
    bye
 !

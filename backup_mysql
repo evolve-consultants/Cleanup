@@ -14,10 +14,10 @@ DATABASE_TAR_FILE="DB_Backups_$DATESTAMP.tar"
 BACKUP_DIR="/backup/$DATESTAMP"
 
 #SFTP upload environment settings
-FTP_SERVER="*******"
-FTP_USERNAME="******"
-FTP_PASSWORD="******"
-FTP_UPLOAD_DIR="*******"
+SFTP_SERVER="*******"
+SFTP_USERNAME="******"
+SFTP_PASSWORD="******"
+SFTP_UPLOAD_DIR="*******"
 
 LOG_FILE=$BACKUP_DIR/backup_$DATESTAMP.log
 
@@ -44,10 +44,13 @@ tar -cvf $TMP/$DATABASE_TAR_FILE $BACKUP_DIR
 ################ UPLOAD to SFTP Server  ################
 echo "Starting  ftp at $TIMESTAMP" >> $LOG_FILE
 
-SSHPASS=3V0lV3123# sshpass -e sftp -oBatchMode=no -b - $FTP_USERNAME@$FTP_SERVER
+SSHPASS=$SFTP_PASSWORD sshpass -e sftp -oBatchMode=no -b - $SFTP_USERNAME@$SFTP_SERVER
  << !
-   cd $FTP_UPLOAD_DIR
+   cd $SFTP_UPLOAD_DIR
    put $TMP/$DATABASE_TAR_FILE
    put $TMP/$APPLICATION_TAR_FILE
    bye
 !
+
+#Remove Local Backups
+rm -rf $BACKUP_DIR
