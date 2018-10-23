@@ -3,22 +3,10 @@
 #Variables
 DATESTAMP=$(date +"%F")
 TIMESTAMP=$(date +"%T")
-
-MYSQL_USER="*****"
-MYSQL_PASSWORD="******"
-MYSQL_HOST="*****"
 MYSQLDUMP="/usr/bin/mysqldump"
-
 TMP="/backup/tmp/"
 DATABASE_TAR_FILE="DB_Backups_$DATESTAMP.tar"
 BACKUP_DIR="/backup/$DATESTAMP"
-
-#SFTP upload environment settings
-SFTP_SERVER="*******"
-SFTP_USERNAME="******"
-SFTP_PASSWORD="******"
-SFTP_UPLOAD_DIR="*******"
-
 LOG_FILE=$BACKUP_DIR/backup_$DATESTAMP.log
 
 #Sort out directories

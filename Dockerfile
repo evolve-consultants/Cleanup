@@ -40,7 +40,10 @@ ENV RANCHER_URL=**None** \
     SFTP_SERVER=**None** \
     SFTP_USERNAME=**None** \
     SFTP_PASSWORD=**None** \
-    FTP_UPLOAD_DIR=**None**
+    SFTP_UPLOAD_DIR=**None** \
+    MYSQL_USER=**None** \
+    MYSQL_PASSWORD=**None** \
+    MYSQL_HOST=**None**
 #example  CRON_MINUTE="* * * * * root echo Hello minute"
 
 # Copy required files

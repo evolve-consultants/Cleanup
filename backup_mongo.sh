@@ -3,23 +3,11 @@
 #Variables
 DATESTAMP=$(date +"%F")
 TIMESTAMP=$(date +"%T")
-
-MONGODB_USER="******"
-MONGODB_PASSWORD="******"
-MONGODB_HOST="******"
 MONGODB_PORT=27017
 MONGODUMP="/usr/bin/mongodump"
-
 TMP="/backup/mongo/tmp/"
 DATABASE_TAR_FILE="DB_Backups_$DATESTAMP.tar"
 BACKUP_DIR="/backup/mongo/$DATESTAMP"
-
-#SFTP upload environment settings
-SFTP_SERVER="******"
-SFTP_USERNAME="******"
-SFTP_PASSWORD="******"
-SFTP_UPLOAD_DIR="******"
-
 LOG_FILE=$BACKUP_DIR/backup_$DATESTAMP.log
 
 #Sort out directories
