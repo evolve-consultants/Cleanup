@@ -48,11 +48,15 @@ COPY ./rancher_stack_removal.sh /rancher_stack_removal.sh
 COPY ./database_removal.sql /database_removal.sql
 COPY ./rancher /rancher
 COPY ./start.sh /start.sh
+COPY ./backup_mongo.sh /backup_mongo.sh
+COPY ./backup_mysql.sh /backup_mysql.sh
 #Setup permissions on scripts
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
 RUN chmod +x /database_removal.sql
 RUN chmod +x /start.sh
+RUN chmod +x /backup_mongo.sh
+RUN chmod +x /backup_mysql.sh
 #Create Backup Dir
 RUN mkdir /backup
 RUN mkdir /backup/mongo
@@ -60,6 +64,8 @@ RUN mkdir /backup/mysql
 #Remove carraige returns fromm scripts from windows to linux
 RUN sed -i -e 's/\r$//' /start.sh
 RUN sed -i -e 's/\r$//' /rancher_stack_removal.sh
+RUN sed -i -e 's/\r$//' /backup_mysql.sh
+RUN sed -i -e 's/\r$//' /backup_mongo.sh
 
 #set cron to run in forground
 CMD /start.sh && cron -f
