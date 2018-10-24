@@ -25,6 +25,10 @@ RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mo
 RUN apt-get update
 RUN apt-get install mongodb-org-tools
 
+#install mysql client for mysql backups / restores
+RUN apt-get update
+RUN apt-get install -y mysql-client
+
 #install cron
 RUN apt-get update && apt-get install cron
 RUN apt-get install -y openssh-client
