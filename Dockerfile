@@ -71,7 +71,9 @@ RUN chmod +x /backup_mysql.sh
 #Create Backup Dir
 RUN mkdir /backup
 RUN mkdir /backup/mongo
+RUN mkdir /backup/mongo/tmp
 RUN mkdir /backup/mysql
+RUN mkdir /backup/mysql/tmp
 #Remove carraige returns fromm scripts from windows to linux
 RUN sed -i -e 's/\r$//' /start.sh
 RUN sed -i -e 's/\r$//' /rancher_stack_removal.sh
