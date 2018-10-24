@@ -3,7 +3,6 @@
 #Variables
 DATESTAMP=$(date +"%F")
 TIMESTAMP=$(date +"%T")
-MONGODB_PORT=27017
 MONGODUMP="/usr/bin/mongodump"
 TMP="/backup/mongo/tmp/"
 DATABASE_TAR_FILE="DB_Backups_$DATESTAMP.tar"

@@ -12,6 +12,7 @@ services:
       - MONGODB_USER=**None**
       - MONGODB_PASSWORD=**None**
       - MONGODB_HOST=**None**
+      - MONGODB_PORT=**None**
       - SFTP_SERVER=**None**
       - SFTP_USERNAME=**None**
       - SFTP_PASSWORD=**None**
@@ -19,3 +20,4 @@ services:
       - MYSQL_USER=**None**
       - MYSQL_PASSWORD=**None**
       - MYSQL_HOST=**None**
+      - MYSQL_PORT=**None**

@@ -43,13 +43,15 @@ ENV RANCHER_URL=**None** \
     MONGODB_USER=**None** \
     MONGODB_PASSWORD=**None** \
     MONGODB_HOST=**None** \
+    MONGODB_PORT=**None** \
     SFTP_SERVER=**None** \
     SFTP_USERNAME=**None** \
     SFTP_PASSWORD=**None** \
     SFTP_UPLOAD_DIR=**None** \
     MYSQL_USER=**None** \
     MYSQL_PASSWORD=**None** \
-    MYSQL_HOST=**None**
+    MYSQL_HOST=**None** \
+    MYSQL_PORT=**NONE**
 #example  CRON_MINUTE="* * * * * root echo Hello minute"
 
 # Copy required files
