@@ -15,7 +15,7 @@ Here is a sample docker-compose file that will start 2 cron jobs:
 version: '3'
 services:
   cron:
-    image: morbz/docker-cron
+    image: evolveuk/docker-cron
     environment:
       - CRON_MINUTE=* * * * * root echo "Hello minute"
       - CRON_HOUR=0 * * * * root echo "Hello hour"
@@ -38,3 +38,27 @@ CRON_DATABASE_REMOVE=0 23 * * * root . /env.sh; sqlcmd -S $DB_SERVER -U $DB_USER
 DB_SERVER=
 DB_USER=
 DB_PASSWORD=
+
+#MonoDB backups
+This will backup mongo db's from a specified host tar locallay and SFTP to a server
+Env vars required-
+MONGODB_USER=
+MONGODB_PASSWORD=
+MONGODB_HOST=
+MONGODB_PORT=
+SFTP_SERVER=
+SFTP_USERNAME=
+SFTP_PASSWORD=
+SFTP_UPLOAD_DIR=
+
+#MYSQL backups
+This will backup All mysql db's from a specified host tar locallay and SFTP to a server
+Env vars required-
+MYSQL_USER=
+MYSQL_PASSWORD=
+MYSQL_HOST=
+MYSQL_PORT=
+SFTP_SERVER=
+SFTP_USERNAME=
+SFTP_PASSWORD=
+SFTP_UPLOAD_DIR=
