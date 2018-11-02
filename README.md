@@ -34,7 +34,7 @@ RANCHER_SECRET_KEY=
 #Database removal
 Will remove ALL other db's expect for listed exceptions
 Env vars required-
-CRON_DATABASE_REMOVE=0 23 * * * root . /env.sh; sqlcmd -S $DB_SERVER -U $DB_USER -P $DB_PASSWORD -i database_removal.sql
+CRON_DATABASE_REMOVE=5 23 * * * root . /env.sh; sqlcmd -S $DB_SERVER -U $DB_USER -P $DB_PASSWORD -i database_removal.sql
 DB_SERVER=
 DB_USER=
 DB_PASSWORD=
@@ -42,6 +42,7 @@ DB_PASSWORD=
 #MonoDB backups
 This will backup mongo db's from a specified host tar locallay and SFTP to a server
 Env vars required-
+CRON_MONGO_BACKUP=10 23 * * * root . /env.sh; /backup_mongo.sh
 MONGODB_USER=
 MONGODB_PASSWORD=
 MONGODB_HOST=
@@ -54,6 +55,7 @@ SFTP_UPLOAD_DIR=
 #MYSQL backups
 This will backup All mysql db's from a specified host tar locallay and SFTP to a server
 Env vars required-
+CRON_MYSQL_BACKUP=15 23 * * * root . /env.sh; /backup_mysql.sh
 MYSQL_USER=
 MYSQL_PASSWORD=
 MYSQL_HOST=
