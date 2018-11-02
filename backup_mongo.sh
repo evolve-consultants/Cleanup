@@ -5,7 +5,7 @@ DATESTAMP=$(date +"%F")
 TIMESTAMP=$(date +"%T")
 MONGODUMP="/usr/bin/mongodump"
 TMP="/backup/mongo/tmp/"
-DATABASE_TAR_FILE="DB_Mongo_Backups_$DATESTAMP.tar"
+DATABASE_TAR_FILE="DB_MONGO_Backups_$DATESTAMP.tar"
 BACKUP_DIR="/backup/mongo/$DATESTAMP"
 
 #Sort out directories
