@@ -6,7 +6,7 @@ TIMESTAMP=$(date +"%T")
 MYSQLDUMP="/usr/bin/mysqldump"
 MYSQL="/usr/bin/mysql"
 TMP="/backup/mysql/tmp/"
-DATABASE_TAR_FILE="DB_Backups_$DATESTAMP.tar"
+DATABASE_TAR_FILE="DB_MYSQL_Backups_$DATESTAMP.tar"
 BACKUP_DIR="/backup/mysql/$DATESTAMP"
 
 #Sort out directories
