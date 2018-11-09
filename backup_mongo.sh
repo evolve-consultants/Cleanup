@@ -19,10 +19,11 @@ $MONGODUMP --host $MONGODB_HOST --port $MONGODB_PORT --out $BACKUP_DIR
 #Local Files backups and tarball DB backup
 
 tar -cvf $TMP/$DATABASE_TAR_FILE $BACKUP_DIR
+gzip $TMP/$DATABASE_TAR_FILE
 
 SSHPASS=$SFTP_PASSWORD sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - $SFTP_USERNAME@$SFTP_SERVER << !
    cd $SFTP_UPLOAD_DIR
-   put $TMP/$DATABASE_TAR_FILE
+   put $TMP/$DATABASE_TAR_FILE.gz
    bye
 !
 

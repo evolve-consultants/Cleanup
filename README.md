@@ -31,10 +31,19 @@ RANCHER_URL=
 RANCHER_ACCESS_KEY=
 RANCHER_SECRET_KEY=
 
-#Database removal
+#MSSQL Database removal
 Will remove ALL other db's expect for listed exceptions
 Env vars required-
 CRON_DATABASE_REMOVE=5 23 * * * root . /env.sh; sqlcmd -S $DB_SERVER -U $DB_USER -P $DB_PASSWORD -i database_removal.sql
+DB_SERVER=
+DB_USER=
+DB_PASSWORD=
+
+#MSSQL Database backup
+Will backup ALL db's from a specified host tar locallay and SFTP to a server
+This Requires a volume mounting from /var/opt/mssql/data on the mssql docker container
+Env vars required-
+CRON_MSSQL_BACKUP=10 23 * * * root . /env.sh; /backup_mssql.sh
 DB_SERVER=
 DB_USER=
 DB_PASSWORD=
