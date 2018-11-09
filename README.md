@@ -47,6 +47,10 @@ CRON_MSSQL_BACKUP=10 23 * * * root . /env.sh; /backup_mssql.sh
 DB_SERVER=
 DB_USER=
 DB_PASSWORD=
+SFTP_SERVER=
+SFTP_USERNAME=
+SFTP_PASSWORD=
+SFTP_UPLOAD_DIR=
 
 #MonoDB backups
 This will backup mongo db's from a specified host tar locallay and SFTP to a server
