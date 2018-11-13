@@ -51,7 +51,8 @@ ENV RANCHER_URL=**None** \
     MYSQL_USER=**None** \
     MYSQL_PASSWORD=**None** \
     MYSQL_HOST=**None** \
-    MYSQL_PORT=**NONE**
+    MYSQL_PORT=**NONE** \
+    REMOTE_BACKUP_DIR=**NONE**
 #example  CRON_MINUTE="* * * * * root echo Hello minute"
 
 # Copy required files
@@ -62,6 +63,7 @@ COPY ./start.sh /start.sh
 COPY ./backup_mongo.sh /backup_mongo.sh
 COPY ./backup_mysql.sh /backup_mysql.sh
 COPY ./backup_mssql.sh /backup_mssql.sh
+COPY ./backup_files.sh /backup_files.sh
 #Setup permissions on scripts
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
@@ -70,6 +72,7 @@ RUN chmod +x /start.sh
 RUN chmod +x /backup_mongo.sh
 RUN chmod +x /backup_mysql.sh
 RUN chmod +x /backup_mssql.sh
+RUN chmod +x /backup_files.sh
 #Create Backup Dir
 RUN mkdir /backup
 RUN mkdir /backup/mongo
@@ -78,11 +81,14 @@ RUN mkdir /backup/mysql
 RUN mkdir /backup/mysql/tmp
 RUN mkdir /backup/mssql
 RUN mkdir /backup/mssql/tmp
+RUN mkdir /backup/files
+RUN mkdir /backup/files/tmp
 #Remove carraige returns fromm scripts from windows to linux
 RUN sed -i -e 's/\r$//' /start.sh
 RUN sed -i -e 's/\r$//' /rancher_stack_removal.sh
 RUN sed -i -e 's/\r$//' /backup_mysql.sh
 RUN sed -i -e 's/\r$//' /backup_mongo.sh
 RUN sed -i -e 's/\r$//' /backup_mssql.sh
+RUN sed -i -e 's/\r$//' /backup_files.sh
 #set cron to run in forground
 CMD /start.sh && cron -f

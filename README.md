@@ -77,3 +77,13 @@ SFTP_SERVER=
 SFTP_USERNAME=
 SFTP_PASSWORD=
 SFTP_UPLOAD_DIR=
+
+#Files backups
+This will backup directory of local mounted filesystem / docker volume tar locallay and SFTP to a server
+Env vars required-
+CRON_FILES_BACKUP=15 23 * * * root . /env.sh; /backup_files.sh
+REMOTE_BACKUP_DIR=
+SFTP_SERVER=
+SFTP_USERNAME=
+SFTP_PASSWORD=
+SFTP_UPLOAD_DIR=
