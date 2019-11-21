@@ -16,7 +16,7 @@ echo "Starting backup at $TIMESTAMP"
 tar -cvf $TMP/$FILES_TAR_FILE $REMOTE_BACKUP_DIR
 gzip $TMP/$FILES_TAR_FILE
 
-SSHPASS=$SFTP_PASSWORD sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - $SFTP_USERNAME@$SFTP_SERVER << !
+SSHPASS=$SFTP_PASSWORD sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -oPort=$SFTP_PORT -b - $SFTP_USERNAME@$SFTP_SERVER << !
    cd $SFTP_UPLOAD_DIR
    put $TMP/$FILES_TAR_FILE.gz
    bye

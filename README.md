@@ -51,6 +51,7 @@ SFTP_SERVER=
 SFTP_USERNAME=
 SFTP_PASSWORD=
 SFTP_UPLOAD_DIR=
+SFTP_PORT=
 
 #MonoDB backups
 This will backup mongo db's from a specified host tar locallay and SFTP to a server
@@ -64,6 +65,7 @@ SFTP_SERVER=
 SFTP_USERNAME=
 SFTP_PASSWORD=
 SFTP_UPLOAD_DIR=
+SFTP_PORT=
 
 #MYSQL backups
 This will backup All mysql db's from a specified host tar locallay and SFTP to a server
@@ -77,6 +79,7 @@ SFTP_SERVER=
 SFTP_USERNAME=
 SFTP_PASSWORD=
 SFTP_UPLOAD_DIR=
+SFTP_PORT=
 
 #Files backups
 This will backup directory of local mounted filesystem / docker volume tar locallay and SFTP to a server
@@ -87,3 +90,4 @@ SFTP_SERVER=
 SFTP_USERNAME=
 SFTP_PASSWORD=
 SFTP_UPLOAD_DIR=
+SFTP_PORT=

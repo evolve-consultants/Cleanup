@@ -48,6 +48,7 @@ ENV RANCHER_URL=**None** \
     SFTP_USERNAME=**None** \
     SFTP_PASSWORD=**None** \
     SFTP_UPLOAD_DIR=**None** \
+    SFTP_PORT=**None**\
     MYSQL_USER=**None** \
     MYSQL_PASSWORD=**None** \
     MYSQL_HOST=**None** \
