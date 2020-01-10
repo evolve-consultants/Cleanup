@@ -91,3 +91,9 @@ SFTP_USERNAME=
 SFTP_PASSWORD=
 SFTP_UPLOAD_DIR=
 SFTP_PORT=
+
+#ClamAV
+This will scan the SCANDIR for viruses. Mount a docker volume to scan another containers files
+Env vars required-
+CRON_FILES_BACKUP=15 23 * * * root . /env.sh; /clamav_scan.sh
+SCANDIR=

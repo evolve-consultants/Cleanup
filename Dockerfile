@@ -33,6 +33,10 @@ RUN apt-get install -y mysql-client
 RUN apt-get update && apt-get install cron
 RUN apt-get install -y openssh-client
 RUN apt-get install sshpass
+
+#install clamAV antivirus
+RUN apt-get update && apt-get install -y clamav
+
 #setup environment variables to none and CRON entries to create
 ENV RANCHER_URL=**None** \
     RANCHER_ACCESS_KEY=**None** \
@@ -53,7 +57,8 @@ ENV RANCHER_URL=**None** \
     MYSQL_PASSWORD=**None** \
     MYSQL_HOST=**None** \
     MYSQL_PORT=**NONE** \
-    REMOTE_BACKUP_DIR=**NONE**
+    REMOTE_BACKUP_DIR=**NONE** \
+    SCANDIR=**None**
 #example  CRON_MINUTE="* * * * * root echo Hello minute"
 
 # Copy required files
@@ -65,6 +70,7 @@ COPY ./backup_mongo.sh /backup_mongo.sh
 COPY ./backup_mysql.sh /backup_mysql.sh
 COPY ./backup_mssql.sh /backup_mssql.sh
 COPY ./backup_files.sh /backup_files.sh
+COPY ./clamav_scan.sh /clamav_scan.sh
 #Setup permissions on scripts
 RUN chmod +x /rancher_stack_removal.sh
 RUN chmod +x /rancher
@@ -74,6 +80,7 @@ RUN chmod +x /backup_mongo.sh
 RUN chmod +x /backup_mysql.sh
 RUN chmod +x /backup_mssql.sh
 RUN chmod +x /backup_files.sh
+RUN chmod +x /clamav_scan.sh
 #Create Backup Dir
 RUN mkdir /backup
 RUN mkdir /backup/mongo
@@ -91,5 +98,6 @@ RUN sed -i -e 's/\r$//' /backup_mysql.sh
 RUN sed -i -e 's/\r$//' /backup_mongo.sh
 RUN sed -i -e 's/\r$//' /backup_mssql.sh
 RUN sed -i -e 's/\r$//' /backup_files.sh
+RUN sed -i -e 's/\r$//' /clamav_scan.sh
 #set cron to run in forground
 CMD /start.sh && cron -f
